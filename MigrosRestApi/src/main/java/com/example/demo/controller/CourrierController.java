@@ -4,22 +4,24 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.request.LogCourierRequest;
 import com.example.demo.entity.Courier;
-import com.example.demo.service.Interface.ICourrierService;
+import com.example.demo.service.Interface.CourierService;
 
 
 
 @RestController
-@RequestMapping("/api/courrier")
+@RequestMapping("/api/courier")
 public class CourrierController {
 	
 	@Autowired
-	private ICourrierService courrierService;
+	private CourierService courierService;
 	
 	@GetMapping("/totalDistance")
 	public Double getTotalTravelDistance() {
@@ -37,16 +39,25 @@ public class CourrierController {
 		
 	}*/
 	@PostMapping("/log")
-	public void logCourrier(@RequestBody com.example.demo.dto.request.Courier courrier) {
+	public String logCourrier(@RequestBody LogCourierRequest requestMessage) {
 		//call service
-		courrierService.logCourrier(courrier);		
+		return courierService.logCourrier(requestMessage);		
+	}
+	@PostMapping("/save")
+	public void saveCourrier(@RequestBody com.example.demo.dto.request.Courier courrier) {
+		//call service
+		courierService.saveCourrier(courrier);		
 	}
 	@GetMapping("/list")
 	public List<Courier> getAllCourriers() {
-		List<Courier> couriers = courrierService.getAllCouriers();
+		List<Courier> couriers = courierService.getAllCouriers();
 		return couriers;
 	}
-	
+	@GetMapping("/totalDistance/{courierId}")
+	public double getTotalDisatance(@PathVariable long courierId) {
+		double totalDistance = courierService.getTotalDisatance(courierId);
+		return totalDistance;
+	}
 
 	
 }

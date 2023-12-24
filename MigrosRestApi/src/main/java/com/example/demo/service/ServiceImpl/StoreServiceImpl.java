@@ -8,8 +8,6 @@ import com.example.demo.dto.request.Store;
 import com.example.demo.repository.StoreRepository;
 import com.example.demo.service.Interface.StoreService;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

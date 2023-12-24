@@ -1,5 +1,15 @@
 package com.example.demo.dto.request;
 
-public class LogCourierRequest {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class LogCourierRequest {
+	String name;
+	String surname;
+	float lat;
+	float lng;
 }

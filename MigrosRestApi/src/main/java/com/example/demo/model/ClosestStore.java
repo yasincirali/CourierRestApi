@@ -1,13 +1,13 @@
 package com.example.demo.model;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Test {
-	private Integer id;
+public class ClosestStore {
+	private long id;
+	private double distance;
 }
