@@ -23,7 +23,7 @@ public class LogUtilImpl implements LogUtil{
 	@Override
 	public ClosestStore getClosestStoreId(float lat, float lng) {
 		
-		List<Store> stores= storeService.fetchStores();
+		List<Store> stores= storeService.fetchStores().getData();
 		Store nearestStore = stores.stream()
     .min(Comparator.comparingDouble(store ->
         calculateDistance(lat, lng, store.getLat(), store.getLng())))

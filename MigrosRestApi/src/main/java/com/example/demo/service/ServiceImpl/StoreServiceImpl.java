@@ -5,6 +5,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.request.Store;
+import com.example.demo.dto.response.BaseResponse;
 import com.example.demo.repository.StoreRepository;
 import com.example.demo.service.Interface.StoreService;
 import com.google.gson.Gson;
@@ -43,9 +44,9 @@ public class StoreServiceImpl implements StoreService{
 	}
 	@Override
     @Cacheable(value = "store")
-	public List<com.example.demo.entity.Store> fetchStores() {
+	public BaseResponse<List<com.example.demo.entity.Store>> fetchStores() {
 		List<com.example.demo.entity.Store> stores = storeRepository.findAll();
-		return stores;
+		return new BaseResponse<List<com.example.demo.entity.Store>> (true,"Success",stores);
 	}
 
 }

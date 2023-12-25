@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.dto.response.BaseResponse;
 import com.example.demo.entity.Store;
 import com.example.demo.service.Interface.StoreService;
 
@@ -25,7 +27,7 @@ public class StoreController {
 		storeService.uploadStores();		
 	}
 	@GetMapping("/list")
-	public List<Store> getStores() {
+	public BaseResponse<List<Store>> getStores() {
 		//call service
 		return storeService.fetchStores();		
 	}
